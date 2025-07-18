@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Richard Amador | Portfilio</title>
+    <link rel="icon" href="./images/icon.png">
+    <link rel="stylesheet" href="src/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  </head>
+  <body>
+    <canvas id="bg"></canvas>
+    <section class="background"></section>
+
+    <main>
+      <nav>
+        <ul class="socials">
+          <li><a href="mailto:richardamador26@gmail.com">email</a></li>
+          <li><a href="https://www.linkedin.com/in/rich-amador/" target="_blank">linked in</a></li>
+        </ul>
+        <ul class="info">
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="hi" style="visibility: visible;">
+        <h1>Hi, I'm Richard</h1>
+        <h3>Website Developer</h3>
+      </div>
+
+      <section class="about" id="about">
+        <h2>Who's Richard?</h2>
+        <p>I am a website developer located in Santa Monica.</p>
+        <p>I love building small apps to make my life easier.</p>
+        <p>I really enjoy playing basketball with my brother on the weekends!</p>
+      </section>
+
+      <section class="languages" id="skills">
+        <h1>Languages & Frameworks</h1>
+        <div class="languages-container">
+          <a href="https://html.spec.whatwg.org/multipage/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/html.png" alt="" class="language-img">
+              <p class="language-name">HTML</p>
+            </div>
+          </a>
+          <a href="https://www.w3.org/Style/CSS/Overview.en.html" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/css.png" alt="" class="language-img">
+              <p class="language-name">CSS</p>
+            </div>
+          </a>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/js.png" alt="" class="language-img">
+              <p class="language-name">JavaScript</p>
+            </div>
+          </a>
+          <a href="https://react.dev/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/react.png" alt="" class="language-img">
+              <p class="language-name">REACT</p>
+            </div>
+          </a>
+          <a href="https://www.python.org/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/python.png" alt="" class="language-img">
+              <p class="language-name">Python</p>
+            </div>
+          </a>
+          <a href="https://www.php.net/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/php.png" alt="" class="language-img">
+              <p class="language-name">PHP</p>
+            </div>
+          </a>
+          <a href="https://nodejs.org/en" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/nodejs.png" alt="" class="language-img">
+              <p class="language-name">Node.js</p>
+            </div>
+          </a>
+          <a href="https://git-scm.com/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/git.png" alt="" class="language-img">
+              <p class="language-name">Git</p>
+            </div>
+          </a>
+          <a href="https://www.mysql.com/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/mysql.png" alt="" class="language-img">
+              <p class="language-name">MySQL</p>
+            </div>
+          </a>
+          <a href="https://www.mongodb.com/" target="_blank">
+            <div class="language-container hidden">
+              <img src="./images/MongoDB.png" alt="" class="language-img">
+              <p class="language-name">MongoDB</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="projects" id="projects">
+        <h1>Projects</h1>
+        <div class="projects-container">
+          <div class="project-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/projects/Portfolio.png')">
+            <div class="text-container">
+              <div class="title-container">
+                <h3>This Website</h3>
+              </div>
+              <div class="description-container">
+                <p>description</p>
+              </div>
+              <div class="date-container">
+                <p>date</p>
+              </div>
+            </div>
+          </div>
+          <div class="project-container">
+            good eats
+          </div>
+          <div class="project-container">
+            asdf
+          </div>
+          <div class="project-container">
+            asdfasdf
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="projects">
+        Contact me
+      </section>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2 id="gamer">what is goodie my gamer</h2>
+
+    </main>
+
+    <script src="src/main.js"></script>
+    <script>
+      // fade in the languages
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+          } else {
+            entry.target.classList.remove('show')
+          }
+        })
+      })
+
+      const hiddenElements = document.querySelectorAll('.hidden');
+      hiddenElements.forEach(el => observer.observe(el));
+    </script>
+  </body>
+</html>
