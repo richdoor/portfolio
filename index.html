@@ -6,6 +6,7 @@
     <title>Richard Amador | Portfilio</title>
     <link rel="icon" href="./images/icon.png">
     <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   </head>
   <body>
@@ -15,8 +16,8 @@
     <main>
       <nav>
         <ul class="socials">
-          <li><a href="mailto:richardamador26@gmail.com">email</a></li>
-          <li><a href="https://www.linkedin.com/in/rich-amador/" target="_blank">linked in</a></li>
+          <li><a href="mailto:richardamador26@gmail.com"><i class="fa fa-envelope" style="font-size: 30px;" aria-hidden="true"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/rich-amador/" target="_blank"><i class="fa fa-linkedin" style="font-size: 30px;" aria-hidden="true"></i></a></li>
         </ul>
         <ul class="info">
           <li><a href="#about">About</a></li>
@@ -103,78 +104,104 @@
           </a>
         </div>
       </section>
-
       <section class="projects" id="projects">
         <h1>Projects</h1>
         <div class="projects-container">
-          <div class="project-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/projects/Portfolio.png')">
-            <div class="text-container">
-              <div class="title-container">
-                <h3>This Website</h3>
-              </div>
-              <div class="description-container">
-                <p>description</p>
-              </div>
-              <div class="date-container">
-                <p>date</p>
+          <a href="https://github.com/richdoor/portfolio" target="_blank" class="project-link">
+            <div class="project-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/projects/Portfolio.png')">
+              <div class="text-container">
+                <div class="title-container">
+                  <h3>Personal Portfolio</h3>
+                </div>
+                <hr>
+                <div class="date-container">
+                  <p>2025</p>
+                </div>
+                <div class="description-container">
+                  <p>This Website</p>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-container">
-            good eats
-          </div>
-          <div class="project-container">
-            asdf
-          </div>
-          <div class="project-container">
-            asdfasdf
-          </div>
+          </a>
+          <a href="https://devpost.com/software/good-eats-a6o5y0" target="_blank" class="project-link">
+            <div class="project-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/projects/Good_eats.png')">
+              <div class="text-container">
+                <div class="title-container">
+                  <h3>Good Eats</h3>
+                </div>
+                <hr>
+                <div class="date-container">
+                  <p>2024</p>
+                </div>
+                <div class="description-container">
+                  <p>AI Powered Healthy Meal Planning Web app created during LA HACKS 2024</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          <a href="https://github.com/richdoor/livestats" target="_blank" class="project-link">
+            <div class="project-container" style="background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./images/projects/livestats.png')">
+              <div class="text-container">
+                <div class="title-container">
+                  <h3>Live Stats</h3>
+                </div>
+                <hr>
+                <div class="date-container">
+                  <p>2024</p>
+                </div>
+                <div class="description-container">
+                  <p>Live YouTube Statistics Display that allows for Comparison between multiple videos</p>
+                </div>
+              </div>
+            </div>
+          </a>
         </div>
       </section>
 
-      <section class="contact" id="projects">
-        Contact me
+      <section class="contact" id="contact">
+        <div class="contact-container">
+          <div class="contact-info">
+            <h1 class="contact-me">Contact Me</h1>
+            <div class="email-container">
+              <i class="fa fa-envelope" style="font-size: 30px;" aria-hidden="true"></i>
+              <span>richardamador26@gmail.com</span>
+            </div>
+            <div class="linkedin-container">
+              <i class="fa fa-linkedin" style="font-size: 30px;" aria-hidden="true"></i>
+              <span><a href="https://www.linkedin.com/in/rich-amador" target="_blank">Linked In</a></span>
+            </div>
+            <div class="phone-container">
+              <i class="fa fa-phone" style="font-size: 30px" aria-hidden="true"></i>
+              <span>310-210-8869</span>
+            </div>
+          </div>
+          <div class="contact-form">
+            <div class="f-name-container f">
+              <label for="" class="f-label">Full Name<span class="asterisk">*</span></label>
+              <input type="text" class="f-input" name="name">
+            </div>
+            <div class="f-info-container">
+              <div class="f-company-container f">
+                <label for="" class="f-label">Company</label>
+                <input type="text" class="f-input" name="company-name">
+              </div>
+              <div class="f-email-container f">
+                <label for="" class="f-label">Email Address<span class="asterisk">*</span></label>
+                <input type="email" class="f-input" name="email-address">
+              </div>
+              <div class="f-phone-container f">
+                <label for="" class="f-label">Phone Number<span class="asterisk">*</span></label>
+                <input type="phone" class="f-input" name="phone-number">
+              </div>
+            </div>
+            <div class="f-message-container">
+              <label for="" class="f-label-area"></label>
+              <textarea name="message" id="" cols="30" rows="10" placeholder="Write your message here:" class="message"></textarea>
+            </div>
+            <button class="f-submit" onclick="sendEmail()">Send</button>
+          </div>
+        </div>
       </section>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <h2 id="gamer">what is goodie my gamer</h2>
-
     </main>
 
     <script src="src/main.js"></script>
@@ -192,6 +219,33 @@
 
       const hiddenElements = document.querySelectorAll('.hidden');
       hiddenElements.forEach(el => observer.observe(el));
+
+      // send the email
+      const sendEmail = () => {
+        let fullName = document.getElementsByName("name")[0].value;
+        let company = document.getElementsByName("company-name")[0].value;
+        let emailAddress = document.getElementsByName("email-address")[0].value;
+        let phoneNumber = document.getElementsByName("phone-number")[0].value;
+        let message = document.getElementsByName("message")[0].value;
+
+        let subject = "Message from " + fullName + " @ " + company + "\n";
+        let body = "Name: " + fullName + "\n" +
+                  "Company: " + company + "\n" +
+                  "Email Address: " + emailAddress + "\n" +
+                  "Phone Number: " + phoneNumber + "\n" +
+                  "Message:\n" + message;
+
+        subject = encodeURIComponent(subject);
+        body = encodeURIComponent(body);
+
+        // Create the mailto: URL
+        let mailtoUrl = "mailto:richardamador26@gmail.com" + 
+                        "?subject=" + subject + 
+                        "&body=" + body;
+
+        // Open the user's default email client
+        window.location.href = mailtoUrl;
+    }
     </script>
   </body>
 </html>
