@@ -9,6 +9,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
   </head>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Only hide horizontal scroll */
+        background: #000;
+        width: 100vw;
+    }
+    html {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+    #bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+    }
+  </style>
   <body>
     <canvas id="bg"></canvas>
     <section class="background"></section>
