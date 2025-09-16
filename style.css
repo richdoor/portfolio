@@ -29,6 +29,8 @@ nav {
   animation-timeline: scroll();
 }
 
+
+
 @keyframes nav-disapear {
   0% {
     opacity: 1;
@@ -63,6 +65,28 @@ nav ul.socials {
 nav ul li a {
   text-decoration: none;
   color: white;
+}
+
+nav ul.info li a {
+  position: relative;
+  text-decoration: none; /* already set, but keep for clarity */
+  color: white; /* matches your current nav color */
+  font-weight: 500;
+}
+
+nav ul.info li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px; /* adjust as needed for spacing under text */
+  width: 0;
+  height: 2px;
+  background-color: white; /* matches link color */
+  transition: width 0.3s ease; /* smooth grow/shrink effect */
+}
+
+nav ul.info li a:hover::after {
+  width: 100%;
 }
 
 canvas {
