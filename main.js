@@ -1,3 +1,5 @@
+// Detect if device is mobile
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || window.innerWidth < 768;
 
 const scene = new THREE.Scene();
 
@@ -5,9 +7,12 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
+  alpha: true,
+  antialias: !isMobile, // Disable antialiasing on mobile for performance
+  powerPreference: isMobile ? 'low-power' : 'high-performance'
 });
 
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(30);
 
@@ -35,31 +40,86 @@ const addStar = () => {
   scene.add(star);
 };
 
-Array(400).fill().forEach(addStar);
+// Reduce star count on mobile for better performance
+const starCount = isMobile ? 150 : 400;
+Array(starCount).fill().forEach(addStar);
+
+// Improved scroll handling for all devices
+let scrollTimeout;
+let lastScrollTop = 0;
 
 const moveCamera = () => {
-  const t = document.body.getBoundingClientRect().top;
-  camera.position.z = 25 + t * 0.1;
+  clearTimeout(scrollTimeout);
+  
+  scrollTimeout = setTimeout(() => {
+    const t = document.body.getBoundingClientRect().top;
+    const scrollTop = Math.abs(t);
+    
+    // Only update if scroll has actually changed (prevents jittery mobile scrolling)
+    if (Math.abs(scrollTop - lastScrollTop) > 1) {
+      camera.position.z = 25 + t * 0.1;
+      lastScrollTop = scrollTop;
+    }
+  }, isMobile ? 10 : 5);
 };
 
-document.body.onscroll = moveCamera;
+// Support multiple scroll events for cross-platform compatibility
+document.body.addEventListener('scroll', moveCamera, { passive: true });
+window.addEventListener('scroll', moveCamera, { passive: true });
+// Touch scrolling support
+document.addEventListener('touchmove', moveCamera, { passive: true });
 
+// Improved resize handler with debouncing
+let resizeTimeout;
 window.addEventListener('resize', () => {
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  camera.aspect = width / height;
-  camera.updateProjectionMatrix();
-  renderer.setSize(width, height);
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  }, 100);
 });
+
+// Handle orientation changes on mobile
+window.addEventListener('orientationchange', () => {
+  setTimeout(() => {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    camera.aspect = width / height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(width, height);
+  }, 200);
+});
+
+// Pause animations when page is not visible (saves battery on mobile)
+let isAnimating = true;
+document.addEventListener('visibilitychange', () => {
+  isAnimating = !document.hidden;
+});
+
+// Slower rotation on mobile to reduce battery drain
+const rotationSpeed = isMobile ? 0.5 : 1;
 
 const animate = () => {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
-  torus.rotation.z += -0.005;
+  if (isAnimating) {
+    torus.rotation.x += 0.01 * rotationSpeed;
+    torus.rotation.y += 0.005 * rotationSpeed;
+    torus.rotation.z += -0.005 * rotationSpeed;
 
-  renderer.render(scene, camera);
+    renderer.render(scene, camera);
+  }
 };
 
 animate();
+
+// Cleanup on page unload
+window.addEventListener('beforeunload', () => {
+  renderer.dispose();
+  geometry.dispose();
+  material.dispose();
+});

@@ -5,14 +5,191 @@
   --language-border-color: rgb(82, 88, 113);
 }
 
+/* Mobile viewport fix for iOS */
+@supports (-webkit-touch-callout: none) {
+  body {
+    /* iOS Safari viewport height fix */
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Responsive Typography */
+.hi h1 {
+  color: rgb(255, 233, 222);
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7.25vw, 7.25vw); /* Responsive font size */
+  margin-left: clamp(20px, 5vw, 100px); /* Responsive margins */
+  z-index: 0;
+}
+
+.hi h3 {
+  color: rgb(255, 216, 184);
+  font-weight: 200;
+  margin-left: clamp(20px, 5vw, 100px);
+  font-size: clamp(1.5rem, 4.45vw, 4.45vw);
+  z-index: 0;
+}
+
+/* Responsive Navigation */
+nav ul.info {
+  grid-column: 8 / 11;
+  font-size: clamp(12px, 1.5vw, 16px);
+}
+
+/* Mobile Navigation Adjustments */
+@media (max-width: 768px) {
+  nav {
+    grid-template-columns: repeat(2, 1fr);
+    height: auto;
+    padding: 10px 0;
+  }
+  
+  nav ul.socials {
+    grid-column: 1;
+    justify-content: flex-start;
+    padding-left: 20px;
+  }
+  
+  nav ul.info {
+    grid-column: 2;
+    font-size: 12px;
+    justify-content: flex-end;
+    padding-right: 20px;
+  }
+  
+  /* Stack about section text better on mobile */
+  .about h2 {
+    font-size: clamp(2rem, 8vw, 4.45vw);
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .about p {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 18px;
+    padding-top: 15px;
+  }
+  
+  /* Languages section mobile */
+  .languages h1 {
+    font-size: clamp(2rem, 8vw, 4.45vw);
+    padding-right: 20px;
+  }
+  
+  .language-container {
+    width: 25vw;
+    height: 25vw;
+    min-width: 80px;
+    min-height: 80px;
+    margin: 5px;
+  }
+  
+  /* Projects section mobile */
+  .projects h1 {
+    font-size: clamp(2rem, 8vw, 5vw);
+  }
+  
+  .project-container {
+    min-width: 300px;
+    width: 300px;
+    height: 400px;
+  }
+  
+  .project-container:hover {
+    min-width: 320px;
+  }
+  
+  /* Contact section mobile */
+  .contact {
+    height: auto;
+    padding-bottom: 50px;
+  }
+  
+  .contact-container {
+    flex-direction: column;
+    width: 90%;
+    top: 50px;
+  }
+  
+  .contact-info {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .contact-form {
+    padding: 40px 20px;
+    width: 100%;
+  }
+  
+  .f-info-container {
+    flex-direction: column;
+  }
+}
+
+/* iPhone X and newer notch support */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+}
+
+/* Improve touch targets */
+nav ul li a,
+.language-container,
+.project-container,
+.f-submit {
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, textarea {
+  font-size: 16px !important; /* iOS won't zoom if font is 16px+ */
+}
+
+/* Smoother scrolling on mobile */
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
 * {
   padding: 0;
   margin: 0;
   font-family: "Inter", serif;
+  -webkit-font-smoothing: antialiased; /* Better font rendering on Mac */
+  -moz-osx-font-smoothing: grayscale; /* Better font rendering on Mac */
+  box-sizing: border-box; /* Consistent box model */
 }
 
+/* Improve scrolling on both platforms */
 html {
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* Smoother scrolling on iOS/Mac */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background: #000;
+  width: 100vw;
+  /* Prevent text selection during animations */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection where needed */
+.about p, .contact-form, .contact-info {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
 }
 
 /* NAV */
